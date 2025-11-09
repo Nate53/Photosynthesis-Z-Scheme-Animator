@@ -1,12 +1,14 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { ZSchemeLesson } from './components/ZSchemeLesson';
-import { LeafIcon } from './components/Icons';
+import { ImageGenerator } from './components/ImageGenerator';
+import { LeafIcon, ImageIcon } from './components/Icons';
 
 const App: React.FC = () => {
-  // Classes for the now-static navigation item
-  const navItemClasses = 
-    `flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-blue text-white shadow-lg`;
+  const [activeView, setActiveView] = useState<'lesson' | 'generator'>('lesson');
+
+  const navButtonClasses = "flex items-center gap-2 px-4 py-2 rounded-lg transition-colors duration-300 shadow-md";
+  const activeClasses = "bg-sky-blue text-white shadow-lg";
+  const inactiveClasses = "bg-gray-700 hover:bg-gray-600 text-gray-300";
 
   return (
     <div className="min-h-screen bg-gray-900 text-light-gray font-sans">
@@ -15,21 +17,32 @@ const App: React.FC = () => {
           <div className="flex items-center gap-3">
             <span className="text-3xl">🌿</span>
             <h1 className="text-xl md:text-3xl font-bold text-leaf-green tracking-wide">
-              Photosynthesis Z-Scheme Explorer
+              Photosynthesis Explorer
             </h1>
           </div>
-          <nav>
-            {/* Changed button to a non-interactive div as it's the only view */}
-            <div className={navItemClasses}>
+          <nav className="flex items-center gap-2">
+            <button
+              onClick={() => setActiveView('lesson')}
+              className={`${navButtonClasses} ${activeView === 'lesson' ? activeClasses : inactiveClasses}`}
+              aria-current={activeView === 'lesson'}
+            >
               <LeafIcon />
               <span className="hidden sm:inline">Z-Scheme Lesson</span>
-            </div>
+            </button>
+             <button
+              onClick={() => setActiveView('generator')}
+              className={`${navButtonClasses} ${activeView === 'generator' ? activeClasses : inactiveClasses}`}
+              aria-current={activeView === 'generator'}
+            >
+              <ImageIcon />
+              <span className="hidden sm:inline">Image Generator</span>
+            </button>
           </nav>
         </div>
       </header>
 
       <main className="container mx-auto p-4 md:p-8">
-        <ZSchemeLesson />
+        {activeView === 'lesson' ? <ZSchemeLesson /> : <ImageGenerator />}
       </main>
       
       <footer className="bg-deep-space text-center p-4 mt-8">
