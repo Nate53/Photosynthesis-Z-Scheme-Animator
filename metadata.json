@@ -1,0 +1,5 @@
+{
+  "name": "Photosynthesis Z-Scheme Animator",
+  "description": "An interactive educational tool for AP and IB Biology students to learn about the light-dependent reactions of photosynthesis through the Z-Scheme model. It also includes an AI-powered image generator to visualize concepts.",
+  "requestFramePermissions": []
+}

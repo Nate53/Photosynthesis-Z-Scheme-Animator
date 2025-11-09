@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌿</text></svg>">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Photosynthesis Z-Scheme Explorer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'forest-green': '#228B22',
+              'leaf-green': '#7CFC00',
+              'sky-blue': '#87CEEB',
+              'sun-yellow': '#FFD700',
+              'deep-space': '#2c3e50',
+              'light-gray': '#ecf0f1',
+            },
+            animation: {
+              'fade-in': 'fadeIn 1s ease-in-out',
+              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'slide-in': 'slideIn 0.5s ease-out forwards',
+              'proton-pump': 'protonPump 1s ease-in-out 0.5s 2 forwards',
+              'proton-flow': 'protonFlow 1s ease-in-out 1.5s 2 forwards',
+              'atp-synth': 'atpSynth 1s 3.5s ease-in-out forwards',
+              'photon-strike': 'photonStrike 1s ease-out forwards',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideIn: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+              protonPump: {
+                  '0%': { transform: 'translateY(0)', opacity: 0 },
+                  '30%': { opacity: 1 },
+                  '100%': { transform: 'translateY(3rem)', opacity: 1 },
+              },
+              protonFlow: {
+                  '0%': { transform: 'translateY(0)', opacity: 0 },
+                  '30%': { opacity: 1 },
+                  '100%': { transform: 'translateY(-3.5rem)', opacity: 1 },
+              },
+              atpSynth: {
+                  '0%': { opacity: '0', transform: 'scale(0.8)' },
+                  '100%': { opacity: '1', transform: 'scale(1)' },
+              },
+              photonStrike: {
+                  'from': { 'stroke-dashoffset': '150' },
+                  'to': { 'stroke-dashoffset': '0' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.29.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="src/index.tsx"></script>
+  </body>
+</html>
